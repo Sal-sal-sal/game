@@ -221,6 +221,7 @@ class Game:
         return events, keys
 
     def update(self, events, keys):
+        global OBSTACLE_SPEED
         if self.game_active:
             # Обновление спрайтов
             self.player_group.update(keys, events)
@@ -231,6 +232,7 @@ class Game:
             # Проверка коллизий
             if pygame.sprite.spritecollide(self.player, self.obstacle_group, dokill=True):
                 self.game_active = False
+                OBSTACLE_SPEED = 7
                 # Сброс времени
                 self.timer.start_ticks = pygame.time.get_ticks()
 
