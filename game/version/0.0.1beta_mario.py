@@ -1,3 +1,6 @@
+# патчи
+# теперь после смерти скорость мобов обнуляется
+# скорость набирается медленнее
 import pygame
 import numpy as np
 from sys import exit
@@ -125,7 +128,7 @@ class Timer:
         global OBSTACLE_SPEED # 
         current = pygame.time.get_ticks()
         seconds = (current - self.start_ticks) // 1000
-        OBSTACLE_SPEED +=seconds/1000  #  трол мод
+        OBSTACLE_SPEED +=seconds/2500  #  //10 трол мод
         text = self.font.render(f"{seconds}", False, 'black').convert_alpha()
         rect = text.get_rect(topleft=self.position)
         pygame.draw.rect(surface, '#d12e4c', rect, 4, border_radius=4)
@@ -134,13 +137,12 @@ class Timer:
 
 class Game:
     def __init__(self):
-        global OBSTACLE_SPEED
         pygame.init()
         pygame.display.set_caption('Джиджа full ООП')
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.clock = pygame.time.Clock()
         self.load_assets()
-        OBSTACLE_SPEED = 7
+        
         
         self.reset_game()
         # Событие спавна препятствий
