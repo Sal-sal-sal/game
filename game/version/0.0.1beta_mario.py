@@ -128,7 +128,8 @@ class Timer:
         global OBSTACLE_SPEED # 
         current = pygame.time.get_ticks()
         seconds = (current - self.start_ticks) // 1000
-        OBSTACLE_SPEED +=seconds/2500  #  //10 трол мод
+        if OBSTACLE_SPEED <16:# turn off трол мод
+            OBSTACLE_SPEED +=seconds/2500  #  //10 трол мод
         text = self.font.render(f"{seconds}", False, 'black').convert_alpha()
         rect = text.get_rect(topleft=self.position)
         pygame.draw.rect(surface, '#d12e4c', rect, 4, border_radius=4)
