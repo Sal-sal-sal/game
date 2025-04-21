@@ -7,7 +7,7 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 GRAVITY = 1
 JUMP_VELOCITY = -21
-OBSTACLE_SPEED = 7
+OBSTACLE_SPEED = 7 #not C
 SPAWN_INTERVAL = 900  # milliseconds
 
 left = False
@@ -125,7 +125,7 @@ class Timer:
         global OBSTACLE_SPEED # 
         current = pygame.time.get_ticks()
         seconds = (current - self.start_ticks) // 1000
-        OBSTACLE_SPEED +=seconds//1000  #  трол мод
+        OBSTACLE_SPEED +=seconds/1000  # // 10 трол мод после 10 секунд будет сверхзвуковая скорость
         text = self.font.render(f"{seconds}", False, 'black').convert_alpha()
         rect = text.get_rect(topleft=self.position)
         pygame.draw.rect(surface, '#d12e4c', rect, 4, border_radius=4)
